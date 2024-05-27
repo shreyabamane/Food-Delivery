@@ -42,10 +42,13 @@ import food_30 from './food_30.jpeg'
 import food_31 from './food_31.jpeg'
 import food_32 from './food_32.jpeg'
 
+import rating_starts from './rating_starts.png'
+
 
 export const assets = {
     logo,
-    header_img
+    header_img,
+    rating_starts
 }
 
 export const menu_list = [
