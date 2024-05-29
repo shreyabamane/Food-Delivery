@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { connectDB } from "./config/db.js";
 
 
 //app config
@@ -12,6 +13,10 @@ app.use(express.json())
 app.use(cors())
 
 
+//db connection
+connectDB();
+
+
 app.get("/",(req,res)=>{
     res.send("API Working")
 })
@@ -22,4 +27,3 @@ app.listen(port,()=>{
 })
 
 
-//mongodb+srv://Shreya:Shreya8263@cluster0.auckslp.mongodb.net/?
