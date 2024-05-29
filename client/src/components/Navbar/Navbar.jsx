@@ -16,7 +16,7 @@ export function Navbar({setShowLogin}) {
 
   return (
     <div className='navbar'>
-       <Link to='/'><img src={assets.logo} alt="logo" /></Link>
+       <Link to='/'><img src={assets.logo} alt="logo" width="100%" height="50px" /></Link>
        <ul className='navbar-menu'>
         <Link to='/' onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>home</Link>
         <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>menu</a>

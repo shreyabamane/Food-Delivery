@@ -8,7 +8,7 @@ export function Footer() {
     <div className='footer' id='footer'>
       <div className="footer-content">
         <div className="footer-content-left">
-            <img src={assets.logo} alt="" />
+            <img src={assets.logo} alt="logo" width="50%" height="50px"  />
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit quae corrupti commodi cupiditate sed consequuntur, adipisci exercitationem nemo? Iste aperiam dicta commodi quisquam? Placeat, ipsam! Voluptatum perferendis quos eligendi ad.</p>
             <div className="footer-social-icons">
                 <img src={assets.facebook_icon} alt="" />
