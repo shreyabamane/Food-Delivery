@@ -36,4 +36,22 @@ const listFood = async (req,res) => {
       }
 }
 
-export {addFood,listFood}
+
+// remove food item
+const removeFood = async (req,res) => {
+    try {
+        const food = await foodModel.findById(req.body.id);
+
+        //delete the image from the folder
+        fs.unlink(`uploads/${food.image}`,()=>{});
+        
+        //image deleted from the database
+        await foodModel.findByIdAndDelete(req.body.id);
+    } catch (error) {
+        
+    }
+}
+
+
+
+export {addFood,listFood,removeFood}
