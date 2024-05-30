@@ -3,6 +3,7 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { BsBagCheck } from "react-icons/bs";
 
 import './Sidebar.css';
+import { NavLink } from 'react-router-dom';
 
 export function Sidebar() {
   return (
@@ -10,20 +11,20 @@ export function Sidebar() {
 
       <div className="sidebar-options">
 
-        <div className="sidebar-option">
+        <NavLink to='/add' className="sidebar-option">
             <IoAddCircleOutline size={22} />
             <p>Add Items</p>
-        </div>
+        </NavLink>
 
-        <div className="sidebar-option">
+        <NavLink to='/list' className="sidebar-option">
             <BsBagCheck size={22} />
             <p>List Items</p>
-        </div>
+        </NavLink>
 
-        <div className="sidebar-option">
+        <NavLink to='/orders' className="sidebar-option">
             <BsBagCheck size={22} />
             <p>Orders</p>
-        </div>
+        </NavLink>
 
       </div>
 
