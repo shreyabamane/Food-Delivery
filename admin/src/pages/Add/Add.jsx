@@ -12,7 +12,7 @@ export function Add() {
           <p>Upload Image</p>
           <label htmlFor="image">
                 {/* upload area */}
-            <MdOutlineCloudUpload /> 
+            <MdOutlineCloudUpload size={50}/> 
           </label>
           <input type="file" id='image' hidden required />
         </div>
@@ -24,7 +24,7 @@ export function Add() {
 
         <div className="add-product-description flex-col">
           <p>Product Description</p>
-          <textarea name="description" rows="16" placeholder='Write content here'></textarea>
+          <textarea name="description" rows="6" placeholder='Write content here'></textarea>
         </div>
 
         <div className="add-category-price">
