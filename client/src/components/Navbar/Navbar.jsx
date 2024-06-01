@@ -1,7 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
-import { FaShoppingBasket } from "react-icons/fa";
+import { FaShoppingBasket, FaUser } from "react-icons/fa";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { IoLogOutOutline } from "react-icons/io5";
+
+
 
 import './Navbar.css';
 import { assets } from '../../assets/assets';
@@ -12,7 +16,7 @@ export function Navbar({setShowLogin}) {
 
   const [menu, setMenu] = useState("home");
 
-  const {getTotalCartAmount} = useContext(StoreContext);
+  const {getTotalCartAmount, token, setToken} = useContext(StoreContext);
 
   return (
     <div className='navbar'>
@@ -25,14 +29,25 @@ export function Navbar({setShowLogin}) {
        </ul>
 
        <div className="navbar-right">
-        <CiSearch size={20}/>
+        <CiSearch size={25}/>
 
         <div className="navbar-search-icon">
-          <Link to='/cart'> <FaShoppingBasket size={20} /></Link>
+          <Link to='/cart'> <FaShoppingBasket size={25} /></Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
 
-        <button onClick={() => setShowLogin(true)}>sign in</button>
+        {!token ? <button onClick={() => setShowLogin(true)}>sign in</button>
+         : <div className='navbar-profile'>
+          <FaUser size={25}/>
+          <ul className="nav-profile-dropdown">
+            <li><MdOutlineShoppingBag size={20} color='tomato' /><p>Orders</p></li>
+            <hr />
+            <li><IoLogOutOutline size={20} color='tomato'/><p>Logout</p></li>
+          </ul>
+         </div>
+         }
+
+        
        </div>
     </div>
   )
