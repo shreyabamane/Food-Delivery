@@ -4,9 +4,9 @@ import {toast} from 'react-toastify';
 
 import './List.css';
 
-export function List() {
+export function List({url}) {
 
-  const url = "http://localhost:8000";
+  // const url = "http://localhost:8000";
 
   const [list, setList] = useState([]);
 

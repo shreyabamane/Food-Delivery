@@ -6,9 +6,9 @@ import './Add.css';
 import { assets } from '../../assets/assets';
 import { toast } from 'react-toastify';
 
-export function Add() {
+export function Add({url}) {
 
-  const url = "http://localhost:8000";
+  // const url = "http://localhost:8000";
 
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
