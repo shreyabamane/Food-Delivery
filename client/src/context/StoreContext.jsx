@@ -1,6 +1,7 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
-import { food_list } from "../assets/assets";
+// import { food_list } from "../assets/assets";
 
 export const StoreContext = createContext(null);
 
@@ -12,6 +13,9 @@ const StoreContextProvider = (props) => {
 
     //to store token
     const [token, setToken] = useState("");
+
+    //food list data from the database
+    const [food_list, setFoodList] = useState([]);
 
     const addToCart = (itemId) => {
         if (!cartItems[itemId]) {
@@ -42,11 +46,23 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
-    //localstorage data will be saved in the token state when we refresh the web page
+    const fetchFoodList = async () => {
+        const response = await axios.get(url+"/api/food/list");
+        setFoodList(response.data.data)
+    }
+
+    
     useEffect(()=>{
-        if (localStorage.getItem("token")) {
-            setToken(localStorage.getItem("token"));
+        //fetch food item data from database
+        async function loadData(){
+            await fetchFoodList();
+
+            //localstorage data will be saved in the token state when we refresh the web page
+            if (localStorage.getItem("token")) {
+                setToken(localStorage.getItem("token"));
+            }
         }
+        loadData();
     },[])
 
     const contextValue = {
