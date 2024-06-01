@@ -7,7 +7,34 @@ import validator from "validator";
 
 
 //login user
-const loginUser = async (req, res) => {}
+const loginUser = async (req, res) => {
+    const {email,password} = req.body;
+    try {
+        //if any account is available then the user account will stored in this user variable
+        const user = await userModel.findOne({email})
+
+        //check wheather the user is available or not
+        if (!user) {
+            return res.json({success:false, message:"User doesn't exist"})
+        }
+         
+       // we are getting the user in that case we will matched the user password with the stored password in the database
+       const isMatch = await bcrypt.compare(password,user.password);
+
+       //password is not matching
+       if (!isMatch) {
+        return res.json({success:false, message:"Invalid credentials"})
+       }
+
+       //password is matching generate token
+       const token = createToken(user._id);
+       res.json({success:true,token})
+
+    } catch (error) {
+        console.log(error);
+        res.json({success:false, message:"Error"})
+    }
+}
 
 
 const createToken = (id) => {
