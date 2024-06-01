@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
 import { FaShoppingBasket, FaUser } from "react-icons/fa";
 import { MdOutlineShoppingBag } from "react-icons/md";
@@ -17,6 +17,15 @@ export function Navbar({setShowLogin}) {
   const [menu, setMenu] = useState("home");
 
   const {getTotalCartAmount, token, setToken} = useContext(StoreContext);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+      localStorage.removeItem("token");
+      setToken("");
+      //after logout send the user to the home page use usenavigate hook
+      navigate("/")
+  }
 
   return (
     <div className='navbar'>
@@ -42,7 +51,7 @@ export function Navbar({setShowLogin}) {
           <ul className="nav-profile-dropdown">
             <li><MdOutlineShoppingBag size={20} color='tomato' /><p>Orders</p></li>
             <hr />
-            <li><IoLogOutOutline size={20} color='tomato'/><p>Logout</p></li>
+            <li onClick={logout}><IoLogOutOutline size={20} color='tomato'/><p>Logout</p></li>
           </ul>
          </div>
          }
