@@ -42,6 +42,13 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
+    //localstorage data will be saved in the token state when we refresh the web page
+    useEffect(()=>{
+        if (localStorage.getItem("token")) {
+            setToken(localStorage.getItem("token"));
+        }
+    },[])
+
     const contextValue = {
         food_list,
         cartItems,
