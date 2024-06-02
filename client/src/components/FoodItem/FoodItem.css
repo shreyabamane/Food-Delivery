@@ -36,6 +36,10 @@
 .food-item-desc{
     color: #676767;
     font-size: 12px;
+    /* for wrapping text */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .food-item-price{
