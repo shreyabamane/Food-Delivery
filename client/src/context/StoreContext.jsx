@@ -17,17 +17,27 @@ const StoreContextProvider = (props) => {
     //food list data from the database
     const [food_list, setFoodList] = useState([]);
 
-    const addToCart = (itemId) => {
+    const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
             setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
         }
         else {
             setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         }
+        //token available
+        if (token) {
+            // whatever the data added in the cart they also added in database
+            await axios.post(url+"/api/cart/add",{itemId},{headers:{token}})
+        }
     }
 
-    const removeFromCart = (itemId) => {
+    const removeFromCart = async (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+        
+        //for remove item from the cart and database also
+        if (token) {
+            await axios.post(url+"/api/cart/remove",{itemId},{headers:{token}})
+        }
     }
 
     //To check cart items
@@ -51,6 +61,12 @@ const StoreContextProvider = (props) => {
         setFoodList(response.data.data)
     }
 
+    //after refresh the page the add cart data is there
+    const loadCartData = async (token) => {
+        const response = await axios.post(url+"/api/cart/get",{},{headers:{token}});
+        setCartItems(response.data.cartData)
+    }
+
     
     useEffect(()=>{
         //fetch food item data from database
@@ -60,6 +76,7 @@ const StoreContextProvider = (props) => {
             //localstorage data will be saved in the token state when we refresh the web page
             if (localStorage.getItem("token")) {
                 setToken(localStorage.getItem("token"));
+                await loadCartData(localStorage.getItem("token"));
             }
         }
         loadData();
