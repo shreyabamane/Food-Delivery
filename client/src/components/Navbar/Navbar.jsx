@@ -49,7 +49,7 @@ export function Navbar({setShowLogin}) {
          : <div className='navbar-profile'>
           <FaUser size={25}/>
           <ul className="nav-profile-dropdown">
-            <li><MdOutlineShoppingBag size={20} color='tomato' /><p>Orders</p></li>
+            <li onClick={()=>navigate('/myorders')}><MdOutlineShoppingBag size={20} color='tomato' /><p>Orders</p></li>
             <hr />
             <li onClick={logout}><IoLogOutOutline size={20} color='tomato'/><p>Logout</p></li>
           </ul>
