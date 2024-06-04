@@ -48,6 +48,7 @@ import facebook_icon from './facebook_icon.png'
 import twitter_icon from './twitter_icon.png'
 import app_store from './app_store.png'
 import play_store from './play_store.png'
+import parcel_icon from './parcel_icon.png'
 
 
 export const assets = {
@@ -58,7 +59,8 @@ export const assets = {
     facebook_icon,
     twitter_icon,
     app_store,
-    play_store
+    play_store,
+    parcel_icon
 }
 
 export const menu_list = [
