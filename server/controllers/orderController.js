@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 const placeOrder = async (req, res) => {
 
     //client url
-    const client_url = "http://localhost:5173"
+    const client_url = "http://localhost:5174";
 
     try {
         const newOrder = new orderModel({
