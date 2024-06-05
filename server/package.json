@@ -7,7 +7,7 @@
   "scripts": {
     "server": "nodemon server.js",
     "build": "npm install",
-    "postinstall": "chmod +x ./node_modules/.bin/nodemon"
+    "postinstall": "chmod +x nodemon"
   },
   "author": "",
   "license": "ISC",
