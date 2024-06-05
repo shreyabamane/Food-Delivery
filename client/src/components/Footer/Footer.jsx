@@ -39,7 +39,7 @@ export function Footer() {
 
       <hr />
 
-      <p className="footer-copyright">Copyright 2024 &copy; Craveful.com - All Right Reserved.</p>
+      <p className="footer-copyright">Copyright 2024 &copy; Cravvings.com - All Right Reserved.</p>
 
     </div>
   )
