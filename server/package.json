@@ -5,9 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js",
-    "build": "npm install",
-    "postinstall": "chmod +x nodemon"
+    "server": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
