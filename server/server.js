@@ -42,8 +42,15 @@ app.use("/api/order",orderRouter)
 //use the client app 
 app.use(express.static(path.join(__dirname, "../client/dist")))
 
+//use the admin app 
+app.use(express.static(path.join(__dirname, "../admin/dist")))
+
 //Render client for any path
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, "../client/dist/index.html")))
+
+
+//Render admin for any path
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, "../admin/dist/index.html")))
 
 
 app.get("/",(req,res)=>{
