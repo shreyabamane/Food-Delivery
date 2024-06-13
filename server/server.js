@@ -8,13 +8,13 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 
 
-import path from 'path';
-import { fileURLToPath } from "url";
+// import path from 'path';
+// import { fileURLToPath } from "url";
 
 // Resolving dirname for ES module
-const _filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(_filename)
-console.log(__dirname);
+// const _filename = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(_filename)
+// console.log(__dirname);
 
 
 //app config
@@ -40,17 +40,17 @@ app.use("/api/order",orderRouter)
 
 
 //use the client app 
-app.use(express.static(path.join(__dirname, "../client/dist")))
+// app.use(express.static(path.join(__dirname, "../client/dist")))
 
 //use the admin app 
-app.use(express.static(path.join(__dirname, "../admin/dist")))
+// app.use(express.static(path.join(__dirname, "../admin/dist")))
 
 //Render client for any path
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, "../client/dist/index.html")))
+// app.get('*', (req, res) => res.sendFile(path.join(__dirname, "../client/dist/index.html")))
 
 
 //Render admin for any path
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, "../admin/dist/index.html")))
+// app.get('*', (req, res) => res.sendFile(path.join(__dirname, "../admin/dist/index.html")))
 
 
 app.get("/",(req,res)=>{
